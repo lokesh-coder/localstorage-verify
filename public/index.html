@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gardevoir" />
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol";
+
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        transition: all 0.5s ease;
+        display: none;
+      }
+      h1 {
+        font-weight: 400;
+      }
+      .pushable {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol";
+
+        position: relative;
+        border: none;
+        background: transparent;
+        padding: 0;
+        cursor: pointer;
+        outline-offset: 4px;
+        transition: filter 250ms;
+      }
+      .shadow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        background: hsl(0deg 0% 0% / 0.25);
+        will-change: transform;
+        transform: translateY(2px);
+        transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+      }
+      .edge {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        background: linear-gradient(
+          to left,
+          hsl(340deg 100% 16%) 0%,
+          hsl(340deg 100% 32%) 8%,
+          hsl(340deg 100% 32%) 92%,
+          hsl(340deg 100% 16%) 100%
+        );
+      }
+      .front {
+        display: block;
+        position: relative;
+        padding: 12px 42px;
+        border-radius: 12px;
+        font-size: 1.25rem;
+        color: white;
+        background: hsl(345deg 100% 47%);
+        will-change: transform;
+        transform: translateY(-4px);
+        transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+        text-transform: uppercase;
+      }
+      .pushable:hover {
+        filter: brightness(110%);
+      }
+      .pushable:hover .front {
+        transform: translateY(-6px);
+        transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+      }
+      .pushable:active .front {
+        transform: translateY(-2px);
+        transition: transform 34ms;
+      }
+      .pushable:hover .shadow {
+        transform: translateY(4px);
+        transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+      }
+      .pushable:active .shadow {
+        transform: translateY(1px);
+        transition: transform 34ms;
+      }
+      .pushable:focus:not(:focus-visible) {
+        outline: none;
+      }
+
+      body.logged {
+        display: flex;
+        background-color: #d3f9d8;
+        color: #2b8a3e;
+      }
+      body.logged button {
+        display: none;
+      }
+      body.logged h1.logged {
+        display: block;
+      }
+      body.logged h1.notlogged {
+        display: none;
+      }
+
+      body.notlogged {
+        display: flex;
+        background-color: #ffe3e3;
+        color: #c92a2a;
+      }
+      body.notlogged button {
+        display: inline-block;
+      }
+      body.notlogged h1.logged {
+        display: none;
+      }
+      body.notlogged h1.notlogged {
+        display: block;
+      }
+    </style>
+    <title>Login</title>
+  </head>
+  <body>
+    <h1 class="logged">You have successfully logged in</h1>
+    <h1 class="notlogged">Click below button to login</h1>
+    <button class="pushable" id="btn">
+      <span class="shadow"></span>
+      <span class="edge"></span>
+      <span class="front"> Login</span>
+    </button>
+    <script src="script.js"></script>
+  </body>
+</html>
